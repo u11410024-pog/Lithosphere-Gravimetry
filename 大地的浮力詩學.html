@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大地的浮力詩學：大地均衡模型對比、真理辨析與台灣造山脈絡</title>
+
+    <!-- Google Fonts: Noto Serif TC & Noto Sans TC & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: {
+                            bg: '#F7F5F0',
+                            card: '#FDFBF7',
+                            border: '#E2DDD5',
+                            muted: '#EAE5DC',
+                        },
+                        ink: {
+                            main: '#2C2A29',
+                            muted: '#595552',
+                            light: '#8C8580',
+                        },
+                        morandi: {
+                            moss: '#5B6E5D',       /* Airy / Nature */
+                            terracotta: '#B86B52', /* Pratt / Thermal */
+                            slate: '#4A6572',      /* Vening Meinesz / Elastic */
+                            crimson: '#A24236',    /* Taiwan / Tectonic Collision */
+                            sand: '#D4C5B0',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Editorial & Paper Grain Styling */
+        body {
+            background-color: #F7F5F0;
+            color: #2C2A29;
+            background-image: radial-gradient(#E2DDD5 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+
+        .paper-shadow {
+            box-shadow: 0 10px 30px -5px rgba(44, 42, 41, 0.05), 0 2px 6px -1px rgba(44, 42, 41, 0.03);
+        }
+
+        .border-linen {
+            border-color: #E2DDD5;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F5F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4C5B0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B86B52;
+        }
+
+        /* SVG Animation */
+        .svg-transition {
+            transition: all 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-morandi-terracotta selection:text-white leading-relaxed">
+
+    <!-- Sticky Editorial Header Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#F7F5F0]/90 border-b border-linen">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="font-serif font-black text-xl tracking-wider text-ink-main">地質手札</span>
+                <span class="text-xs font-mono bg-paper-border px-2 py-0.5 rounded text-ink-muted">VOL. 04 · GRAVITY & ISOSTASY</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-ink-muted">
+                <a href="#preface" class="hover:text-morandi-crimson transition-colors">序章｜浮力詩學</a>
+                <a href="#models" class="hover:text-morandi-moss transition-colors">I. 三大模型對比</a>
+                <a href="#truth" class="hover:text-morandi-terracotta transition-colors">II. 哪個模型才是對的？</a>
+                <a href="#taiwan" class="hover:text-morandi-crimson transition-colors">III. 台灣造山脈絡</a>
+                <a href="#anomalies" class="hover:text-morandi-slate transition-colors">IV. 重力異常雙濾鏡</a>
+            </nav>
+            <a href="#calculator" class="inline-flex items-center text-xs font-mono tracking-wider border border-ink-main px-3 py-1.5 rounded-full hover:bg-ink-main hover:text-paper-bg transition-all">
+                <span>動態診斷</span>
+                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24">
+
+        <!-- Hero / Preface Section -->
+        <section id="preface" class="space-y-8 relative">
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-linen pb-8 gap-6">
+                <div class="space-y-4 max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-crimson tracking-widest uppercase">
+                        <span class="w-2 h-2 rounded-full bg-morandi-crimson"></span>
+                        <span>Geophysics Editorial Essay · Complete Edition</span>
+                    </div>
+                    <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-ink-main leading-tight">
+                        大地的浮力詩學：<br>
+                        <span class="text-morandi-moss font-normal italic">大地均衡模型對比、真理辨析與台灣造山脈絡</span>
+                    </h1>
+                    <p class="text-ink-muted text-base sm:text-lg font-serif italic border-l-2 border-morandi-terracotta pl-4 py-1">
+                        「昂揚的山嶺與沉潛的海溝，皆是地殼浮懸於塑性地函之上的靜水壓力印記。地球如何在沉重的構造應力與輕盈的阿基米德浮力之間，尋求終極的靜力平衡？」
+                    </p>
+                </div>
+                <!-- Magazine Stamp -->
+                <div class="hidden md:flex flex-col items-center justify-center p-4 border border-linen rounded-lg bg-paper-card w-32 h-32 flex-shrink-0 text-center">
+                    <span class="text-xs font-mono text-ink-light">ISOSTASY</span>
+                    <span class="font-serif font-bold text-2xl text-morandi-terracotta my-1">均衡</span>
+                    <span class="text-[10px] text-ink-muted font-mono">&Delta;g<sub>I</sub> = &Delta;g<sub>B</sub> - &Delta;g<sub>R</sub></span>
+                </div>
+            </div>
+
+            <!-- Intro Concept Card -->
+            <div class="bg-paper-card p-6 sm:p-8 rounded-2xl border border-linen paper-shadow grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-morandi-moss uppercase tracking-wider">Concept 01 · 浮力原理</span>
+                    <h3 class="font-serif font-bold text-lg text-ink-main">阿基米德浮力靜水平衡</h3>
+                    <p class="text-xs text-ink-muted leading-relaxed">
+                        地殼（Crust, 密度 &rho;<sub>c</sub>）與岩石圈漂浮於較緻密且具塑性流動能力的軟流圈地函（Mantle, 密度 &rho;<sub>m</sub>）之上。如同冰山浮於海面，山體質量過剩需由深部低密度物質補償。
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-morandi-terracotta uppercase tracking-wider">Concept 02 · 補償基面</span>
+                    <h3 class="font-serif font-bold text-lg text-ink-main">補償深度 (Depth of Compensation)</h3>
+                    <p class="text-xs text-ink-muted leading-relaxed">
+                        在補償深度（C-C'）及其下方，由所有上方垂直岩石柱所施加的靜岩壓力（Hydrostatic Pressure）皆相等。地底內部如同高壓流體般傳遞均質壓力。
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-morandi-slate uppercase tracking-wider">Concept 03 · 異常診斷</span>
+                    <h3 class="font-serif font-bold text-lg text-ink-main">均衡重力異常 (Isostatic Anomaly)</h3>
+                    <p class="text-xs text-ink-muted leading-relaxed">
+                        公式為 &Delta;g<sub>I</sub> = &Delta;g<sub>B</sub> - &Delta;g<sub>R</sub>。當 &Delta;g<sub>I</sub> = 0 為完全補償；&Delta;g<sub>I</sub> &gt; 0 代表補償不足（Undercompensated），顯現強烈的構造外力。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter I: Three Isostasy Models Contrast & Interactive SVG -->
+        <section id="models" class="space-y-10">
+            <div class="space-y-3 border-l-4 border-morandi-moss pl-4">
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-moss tracking-widest uppercase">
+                    <span>CHAPTER I</span>
+                    <span>·</span>
+                    <span>ISOSTASY MODELS COMPARISON</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-main">三大經典大地均衡模型：幾何架構與重力響應對比</h2>
+                <p class="text-sm text-ink-muted">
+                    點擊下方按鈕切換不同模型，即時觀察地殼山根形態、密度橫向變化、板塊撓曲行為，以及對應的自由空氣重力異常（&Delta;g<sub>FA</sub>）與布蓋重力異常（&Delta;g<sub>B</sub>）曲線。
+                </p>
+            </div>
+
+            <!-- Interactive SVG Switcher Workbench -->
+            <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow space-y-6">
+                <!-- Switcher Tabs -->
+                <div class="flex flex-wrap gap-2.5 border-b border-linen pb-5">
+                    <button id="tab-airy" onclick="switchModel('airy')" class="px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 text-white bg-morandi-moss">
+                        (a) 艾里模型 Airy (1855)
+                    </button>
+                    <button id="tab-pratt" onclick="switchModel('pratt')" class="px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 border border-linen text-ink-muted">
+                        (b) 普拉特模型 Pratt (1855)
+                    </button>
+                    <button id="tab-meinesz" onclick="switchModel('meinesz')" class="px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 border border-linen text-ink-muted">
+                        (c) 維寧·邁內茲 Vening Meinesz (1931)
+                    </button>
+                    <button id="tab-taiwan" onclick="switchModel('taiwan')" class="px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 border border-linen text-ink-muted">
+                        (d) 台灣碰撞造山剖面 Taiwan Orogen
+                    </button>
+                </div>
+
+                <!-- Interactive SVG Canvas -->
+                <div class="w-full overflow-hidden rounded-xl border border-linen bg-[#FAF8F4] p-2 sm:p-4">
+                    <svg viewBox="0 0 820 465" class="w-full h-auto select-none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Pratt Lateral Density Gradient -->
+                            <linearGradient id="pratt-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#D4C5B0" />
+                                <stop offset="22%" stop-color="#D4C5B0" />
+                                <stop offset="38%" stop-color="#EADAC7" />
+                                <stop offset="54%" stop-color="#D4C5B0" />
+                                <stop offset="72%" stop-color="#A69580" />
+                                <stop offset="100%" stop-color="#8C7B68" />
+                            </linearGradient>
+
+                            <!-- Crust Hatching Pattern -->
+                            <pattern id="crust-hatch" width="12" height="12" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                                <line x1="0" y1="0" x2="0" y2="12" stroke="#2C2A29" stroke-width="0.6" stroke-opacity="0.08" />
+                            </pattern>
+
+                            <!-- Mantle Stipple Pattern -->
+                            <pattern id="mantle-dots" width="16" height="16" patternUnits="userSpaceOnUse">
+                                <circle cx="4" cy="4" r="0.8" fill="#595552" fill-opacity="0.18" />
+                                <circle cx="12" cy="12" r="0.8" fill="#595552" fill-opacity="0.18" />
+                            </pattern>
+                        </defs>
+
+                        <!-- Top Zone: Gravity Anomaly Graph Panel (y: 15 to 125) -->
+                        <rect x="60" y="15" width="710" height="110" rx="6" fill="#FDFBF7" stroke="#E2DDD5" stroke-width="1" />
+                        <text x="72" y="30" font-size="10" font-family="JetBrains Mono, monospace" fill="#8C8580">GRAVITY ANOMALY PROFILE (mgal)</text>
+                        
+                        <!-- Gravity Axis Labels & Zero Reference Line -->
+                        <text x="54" y="42" font-size="9" font-family="JetBrains Mono, monospace" fill="#8C8580" text-anchor="end">+200</text>
+                        <line x1="60" y1="39" x2="770" y2="39" stroke="#E2DDD5" stroke-width="0.7" stroke-dasharray="2 3" />
+                        
+                        <text x="54" y="83" font-size="9" font-family="JetBrains Mono, monospace" fill="#2C2A29" text-anchor="end">0</text>
+                        <line x1="60" y1="80" x2="770" y2="80" stroke="#8C8580" stroke-width="1" stroke-dasharray="4 4" />
+                        
+                        <text x="54" y="118" font-size="9" font-family="JetBrains Mono, monospace" fill="#8C8580" text-anchor="end">-150</text>
+                        <line x1="60" y1="115" x2="770" y2="115" stroke="#E2DDD5" stroke-width="0.7" stroke-dasharray="2 3" />
+
+                        <!-- Gravity Legend inside Top Panel -->
+                        <g transform="translate(540, 22)">
+                            <line x1="0" y1="5" x2="18" y2="5" stroke="#A24236" stroke-width="2.2" />
+                            <text x="23" y="8" font-size="9.5" font-family="Noto Sans TC, sans-serif" fill="#2C2A29">自由空間 &Delta;g<tspan dy="2" font-size="7.5">FA</tspan></text>
+                            <line x1="108" y1="5" x2="126" y2="5" stroke="#4A6572" stroke-width="2.2" stroke-dasharray="5 3" />
+                            <text x="131" y="8" font-size="9.5" font-family="Noto Sans TC, sans-serif" fill="#2C2A29">布蓋異常 &Delta;g<tspan dy="2" font-size="7.5">B</tspan></text>
+                        </g>
+
+                        <!-- Dynamic Gravity Curves -->
+                        <path id="path-fa" class="svg-transition" d="M 70,80 L 220,80 Q 315,76 410,80 L 540,80 Q 600,84 660,80 L 760,80" fill="none" stroke="#A24236" stroke-width="2.4" stroke-linecap="round" />
+                        <path id="path-ba" class="svg-transition" d="M 70,80 L 210,80 Q 315,116 420,80 L 540,80 Q 600,42 660,42 L 760,42" fill="none" stroke="#4A6572" stroke-width="2.4" stroke-dasharray="6 3" stroke-linecap="round" />
+
+                        <!-- Bottom Zone: Geological Cross-Section Panel (y: 135 to 450) -->
+                        <rect x="60" y="135" width="710" height="315" rx="6" fill="#F4F1EA" stroke="#E2DDD5" stroke-width="1" />
+
+                        <!-- Mantle Background Fill -->
+                        <rect x="61" y="245" width="708" height="204" rx="5" fill="#E6E0D6" />
+                        <rect x="61" y="245" width="708" height="204" rx="5" fill="url(#mantle-dots)" />
+                        <text x="120" y="405" font-size="11" font-family="Noto Serif TC, serif" font-weight="600" fill="#595552">地函 Mantle (&rho;<tspan dy="2" font-size="8">m</tspan><tspan dy="-2"> &approx; 3.27–3.30 g/cm&sup3;)</tspan></text>
+
+                        <!-- Sea Level Reference Line -->
+                        <line x1="60" y1="210" x2="770" y2="210" stroke="#4A6572" stroke-width="1" stroke-dasharray="3 3" opacity="0.75" />
+                        <text x="66" y="204" font-size="9" font-family="JetBrains Mono, monospace" fill="#4A6572">Sea Level (0 m)</text>
+
+                        <!-- Ocean Water Layer -->
+                        <path id="ocean-water" class="svg-transition" d="M 540,210 L 760,210 L 760,242 L 660,242 Q 600,242 540,210 Z" fill="#4A6572" opacity="0.24" />
+
+                        <!-- Dynamic Crust Body -->
+                        <path id="crust-body" class="svg-transition" d="M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242 L 760,280 L 660,280 Q 600,280 540,325 L 420,325 Q 315,412 210,325 L 70,325 Z" fill="#D4C5B0" />
+                        <path id="crust-overlay" class="svg-transition" d="M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242 L 760,280 L 660,280 Q 600,280 540,325 L 420,325 Q 315,412 210,325 L 70,325 Z" fill="url(#crust-hatch)" />
+
+                        <!-- Pratt Vertical Column Dividers (Visible only in Pratt mode) -->
+                        <g id="pratt-columns" class="svg-transition" opacity="0">
+                            <line x1="210" y1="210" x2="210" y2="365" stroke="#B86B52" stroke-width="1.2" stroke-dasharray="4 3" />
+                            <line x1="420" y1="210" x2="420" y2="365" stroke="#B86B52" stroke-width="1.2" stroke-dasharray="4 3" />
+                            <line x1="540" y1="210" x2="540" y2="365" stroke="#B86B52" stroke-width="1.2" stroke-dasharray="4 3" />
+                            <text x="140" y="290" font-size="10" font-family="JetBrains Mono, monospace" fill="#2C2A29" text-anchor="middle">&rho;<tspan dy="2" font-size="8">0</tspan><tspan dy="-2"> = 2.67</tspan></text>
+                            <text x="315" y="275" font-size="10.5" font-family="JetBrains Mono, monospace" font-weight="bold" fill="#A24236" text-anchor="middle">&rho;<tspan dy="2" font-size="8">1</tspan><tspan dy="-2"> = 2.45 (低密度)</tspan></text>
+                            <text x="480" y="290" font-size="10" font-family="JetBrains Mono, monospace" fill="#2C2A29" text-anchor="middle">&rho;<tspan dy="2" font-size="8">0</tspan><tspan dy="-2"> = 2.67</tspan></text>
+                            <text x="655" y="305" font-size="10.5" font-family="JetBrains Mono, monospace" font-weight="bold" fill="#2C2A29" text-anchor="middle">&rho;<tspan dy="2" font-size="8">2</tspan><tspan dy="-2"> = 2.95 (高密度)</tspan></text>
+                        </g>
+
+                        <!-- Taiwan Tectonic Thrust Faults & Arrows (Visible only in Taiwan mode) -->
+                        <g id="taiwan-faults" class="svg-transition" opacity="0">
+                            <!-- Thrust faults -->
+                            <path d="M 275,210 Q 300,255 345,295" fill="none" stroke="#A24236" stroke-width="1.5" stroke-dasharray="4 2" />
+                            <path d="M 320,175 Q 350,235 390,295" fill="none" stroke="#A24236" stroke-width="1.5" stroke-dasharray="4 2" />
+                            <!-- Longitudinal Valley Suture -->
+                            <path d="M 455,208 L 430,340" fill="none" stroke="#A24236" stroke-width="2" />
+                            <!-- Compression Arrows -->
+                            <path d="M 650,262 L 580,262 M 580,262 L 590,257 M 580,262 L 590,267" stroke="#A24236" stroke-width="2" fill="none" />
+                            <text x="615" y="254" font-size="9" font-family="JetBrains Mono, monospace" font-weight="bold" fill="#A24236" text-anchor="middle">8.2 cm/yr 擠壓</text>
+                            <text x="275" y="198" font-size="9.5" font-family="Noto Sans TC, sans-serif" fill="#2C2A29" text-anchor="middle">西部麓山帶</text>
+                            <text x="365" y="138" font-size="10.5" font-family="Noto Serif TC, serif" font-weight="bold" fill="#A24236" text-anchor="middle">中央山脈 (近4000m)</text>
+                            <text x="505" y="182" font-size="9.5" font-family="Noto Sans TC, sans-serif" fill="#2C2A29" text-anchor="middle">海岸山脈</text>
+                        </g>
+
+                        <!-- Topography Surface Line -->
+                        <path id="topo-line" class="svg-transition" d="M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242" fill="none" stroke="#5B6E5D" stroke-width="2.8" stroke-linecap="round" />
+
+                        <!-- Moho Boundary Line -->
+                        <path id="moho-line" class="svg-transition" d="M 70,325 L 210,325 Q 315,412 420,325 L 540,325 Q 600,280 660,280 L 760,280" fill="none" stroke="#2C2A29" stroke-width="2.2" />
+
+                        <!-- Compensation Depth Line C-C' -->
+                        <line id="compensation-line" class="svg-transition" x1="65" y1="425" x2="765" y2="425" stroke="#A24236" stroke-width="1.4" stroke-dasharray="6 4" />
+                        <text id="compensation-text" class="svg-transition" x="760" y="418" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#A24236" text-anchor="end">補償深度 Compensation Depth C-C' (靜岩壓力相等)</text>
+
+                        <!-- Dynamic Structural Annotations -->
+                        <text id="label-plain" x="140" y="200" font-size="10" font-family="Noto Sans TC, sans-serif" fill="#595552" text-anchor="middle">正常大陸地殼 (T<tspan dy="2" font-size="7.5">0</tspan><tspan dy="-2">)</tspan></text>
+                        <text id="label-mountain" x="315" y="142" font-size="10.5" font-family="Noto Serif TC, serif" font-weight="bold" fill="#2C2A29" text-anchor="middle">高山地形 Mountain (h<tspan dy="2" font-size="8">1</tspan><tspan dy="-2">)</tspan></text>
+                        <text id="label-root" x="315" y="395" font-size="10.5" font-family="Noto Serif TC, serif" font-weight="bold" fill="#2C2A29" text-anchor="middle">深厚山根 Root (r<tspan dy="2" font-size="8">2</tspan><tspan dy="-2">)</tspan></text>
+                        <text id="label-antiroot" x="675" y="266" font-size="9.5" font-family="Noto Sans TC, sans-serif" fill="#2C2A29" text-anchor="middle">薄海洋地殼 (反山根)</text>
+                        <text id="label-density" x="140" y="275" font-size="10" font-family="JetBrains Mono, monospace" fill="#595552" text-anchor="middle">&rho;<tspan dy="2" font-size="8">c</tspan><tspan dy="-2"> = 2.67 g/cm&sup3; (均一)</tspan></text>
+                    </svg>
+                </div>
+
+                <!-- Dynamic Description Card -->
+                <div class="bg-paper-bg p-5 sm:p-6 rounded-xl border border-linen space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <h3 id="desc-title" class="font-serif font-bold text-lg text-morandi-moss">
+                            <span>(a) 艾里模型 (Airy's Model, 1855)</span>
+                            <span class="ml-3 text-xs font-mono font-normal px-2 py-0.5 rounded bg-morandi-moss/15 text-morandi-moss">均一密度 · 變化山根</span>
+                        </h3>
+                        <span id="desc-formula" class="font-mono text-xs bg-paper-card px-3 py-1 rounded border border-linen text-ink-main">
+                            Root r = [ &rho;c / (&rho;m - &rho;c) ] &times; h
+                        </span>
+                    </div>
+                    <p id="desc-text" class="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                        在艾里模型中，地殼密度 &rho;c 橫向保持常數（2.67 g/cm³）。高聳山脈下方有深厚山根（Root）伸入較緻密的地函中提供浮力；而海洋下方地殼則大幅變薄（反山根）。當浮力補償完全時，自由空氣異常 &Delta;gFA &approx; 0，而布蓋異常 &Delta;gB 在高山呈現大幅度負異常、在深海呈現強烈正異常。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6-Column Comparative Matrix Table -->
+            <div class="bg-paper-card border border-linen rounded-2xl overflow-hidden paper-shadow">
+                <div class="p-5 sm:p-6 border-b border-linen">
+                    <h3 class="font-serif font-bold text-lg text-ink-main">三大均衡模型核心物理性質對照表</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-paper-bg border-b border-linen font-mono text-ink-muted">
+                                <th class="p-4">模型名稱</th>
+                                <th class="p-4">地殼密度分佈</th>
+                                <th class="p-4">莫氏面 (Moho) 形態</th>
+                                <th class="p-4">岩石圈力學假設</th>
+                                <th class="p-4">自由空間異常 (&Delta;g<sub>FA</sub>)</th>
+                                <th class="p-4">主要適用地質環境</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-linen text-ink-main">
+                            <tr class="hover:bg-paper-bg/60 transition-colors">
+                                <td class="p-4 font-serif font-bold text-morandi-moss">艾里模型<br><span class="font-mono text-[10px] font-normal text-ink-light">Airy (1855)</span></td>
+                                <td class="p-4">橫向均一常數<br>(&rho;<sub>c</sub> &approx; 2.67 g/cm³)</td>
+                                <td class="p-4">隨地形起伏鏡像變化<br>（高山有深山根、海洋薄）</td>
+                                <td class="p-4">局部垂直獨立岩柱<br>（無橫向剪應力耦合）</td>
+                                <td class="p-4 font-mono">趨近於 0 mGal<br>（完全補償時）</td>
+                                <td class="p-4">成熟大陸造山帶<br>（如阿爾卑斯、喜馬拉雅）</td>
+                            </tr>
+                            <tr class="hover:bg-paper-bg/60 transition-colors">
+                                <td class="p-4 font-serif font-bold text-morandi-terracotta">普拉特模型<br><span class="font-mono text-[10px] font-normal text-ink-light">Pratt (1855)</span></td>
+                                <td class="p-4">橫向變化<br>（高山密度低、海洋密度高）</td>
+                                <td class="p-4">完全平坦水平面<br>（固定補償深度 D）</td>
+                                <td class="p-4">局部垂直獨立岩柱<br>（熱膨脹與密度分異）</td>
+                                <td class="p-4 font-mono">趨近於 0 mGal<br>（完全補償時）</td>
+                                <td class="p-4">熱異常與擴張環境<br>（中洋脊、大陸裂谷帶）</td>
+                            </tr>
+                            <tr class="hover:bg-paper-bg/60 transition-colors">
+                                <td class="p-4 font-serif font-bold text-morandi-slate">維寧·邁內茲<br><span class="font-mono text-[10px] font-normal text-ink-light">Vening Meinesz (1931)</span></td>
+                                <td class="p-4">可為均一或分層<br>（彈性岩石圈板塊）</td>
+                                <td class="p-4">廣域平緩向下撓曲<br>（兩側伴隨前淵凹陷）</td>
+                                <td class="p-4">連續彈性薄板<br>（具備抗彎剛度 D<sub>f</sub>）</td>
+                                <td class="p-4 font-mono">負載中心正異常、<br>兩側前淵呈負異常</td>
+                                <td class="p-4">局部集中負載與前陸盆地<br>（夏威夷火山鏈、隱沒帶）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter II: Which Model is Correct? -->
+        <section id="truth" class="space-y-8">
+            <div class="space-y-3 border-l-4 border-morandi-terracotta pl-4">
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-terracotta tracking-widest uppercase">
+                    <span>CHAPTER II</span>
+                    <span>·</span>
+                    <span>SCIENTIFIC VERDICT</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-main">真理辨析：究竟哪個模型才是「對的」？</h2>
+            </div>
+
+            <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-10 paper-shadow space-y-8">
+                <!-- Core Editorial Conclusion Callout -->
+                <div class="bg-paper-bg border-l-4 border-morandi-crimson p-6 rounded-r-xl space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-widest text-morandi-crimson font-bold">核心科學結論 · THE EDITORIAL VERDICT</span>
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-ink-main leading-snug">
+                        「沒有單一古典模型在全地球處處皆對；若論最貼近真實地球岩石圈物理本質的普適理論，『維寧·邁內茲彈性撓曲模型』最為正確；而艾里與普拉特則是不同地質構造環境下的極端理想近似。」
+                    </h3>
+                    <p class="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                        現代震波層析成像（Seismic Tomography）與高精度衛星重力證實，真實地球的均衡機制是「板塊彈性剛度」、「地殼厚度變化」與「熱密度差異」三者共同作用的結果。
+                    </p>
+                </div>
+
+                <!-- 3 Pillars of Evidence -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg/50 space-y-3">
+                        <div class="text-xs font-mono text-morandi-slate font-bold">01 · 為何 Vening Meinesz 最接近真實？</div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">岩石圈不是一排互不相干的木塊</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            Airy 與 Pratt 假設地殼由互無摩擦的垂直岩柱組成（零抗剪強度），這在物理上不可能。真實岩石圈具備<b>彈性抗彎剛度（Flexural Rigidity）</b>，短波長（&lt;100 km）的小山丘直接由岩石強度支撐而不產生山根；唯有大尺度山脈才會壓彎板塊產生區域性撓曲。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg/50 space-y-3">
+                        <div class="text-xs font-mono text-morandi-moss font-bold">02 · 艾里模型在何處勝過普拉特？</div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">大陸與海洋地殼的本質差異</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            震波探勘明確觀測到喜馬拉雅山下方莫氏面深達 70 km（深山根），而大洋盆地莫氏面僅約 10 km。這證明<b>大尺度海陸高差與大陸造山帶主要遵循 Airy 的「地殼厚度變化機制」</b>，而非 Pratt 的平坦莫氏面。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg/50 space-y-3">
+                        <div class="text-xs font-mono text-morandi-terracotta font-bold">03 · 普拉特模型在何處不可或缺？</div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">熱膨脹主導的海洋地形</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            中洋脊（Mid-Ocean Ridge）高出深海平原約 2.5 km，但其下方並沒有變厚的山根。這是因為新生地函溫度極高、熱膨脹導致密度較低；隨著板塊遠離中洋脊冷卻收縮、密度增加而下沉——這正是 <b>Pratt 密度熱補償機制</b>的完美體現。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter III: Taiwan Tectonic Context & Isostasy Evidence -->
+        <section id="taiwan" class="space-y-8">
+            <div class="space-y-3 border-l-4 border-morandi-crimson pl-4">
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-crimson tracking-widest uppercase">
+                    <span>CHAPTER III</span>
+                    <span>·</span>
+                    <span>TAIWAN OROGENIC CASE STUDY</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-main">台灣造山脈絡分析：台灣是否達到大地均衡？</h2>
+                <p class="text-sm text-ink-muted">
+                    結合講義中 Yen et al. (1990, 1992) 與 Masson et al. (2012) 的重力剖面與構造模型，檢視這座年輕造山帶的力學真相。
+                </p>
+            </div>
+
+            <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow space-y-8">
+                <!-- Direct Answer Banner -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-xl bg-morandi-crimson/10 border border-morandi-crimson/30">
+                    <div class="space-y-1">
+                        <span class="text-xs font-mono font-bold text-morandi-crimson">診斷結論 · DIAGNOSIS</span>
+                        <h3 class="font-serif text-xl font-bold text-ink-main">
+                            否！台灣目前「尚未達到大地均衡」，處於強烈的「補償不足 (Undercompensated, &Delta;g<sub>I</sub> &gt; 0)」狀態。
+                        </h3>
+                    </div>
+                    <span class="font-mono text-xs bg-morandi-crimson text-white px-3 py-1.5 rounded-lg flex-shrink-0 text-center">
+                        弧陸碰撞擠壓中 · Active Collision
+                    </span>
+                </div>
+
+                <!-- 4 Dimensions of Geophysical Evidence -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-morandi-crimson font-bold">證據 01 · 自由空間異常 (&Delta;g<sub>FA</sub>)</span>
+                            <span class="text-[11px] font-mono text-ink-light">Yen et al., 1990</span>
+                        </div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">中央山脈呈現高達 +200 ~ +300 mGal 強烈正異常</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            若台灣已達艾里均衡，高海拔山區的 &Delta;g<sub>FA</sub> 應接近 0 mGal。然而台灣自由空間異常圖與地形高度高度正相關，中央山脈呈現超過 +200 mGal 的巨幅正異常，顯示地表龐大的山體質量<b>沒有足夠的深部低密度山根來抵消</b>。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-morandi-crimson font-bold">證據 02 · 布蓋異常非對稱偏移 (&Delta;g<sub>B</sub>)</span>
+                            <span class="text-[11px] font-mono text-ink-light">Masson et al., 2012</span>
+                        </div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">負異常中心偏西，東部海岸山脈呈強正異常</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            在靜力均衡山脈中，布蓋負異常最低谷應正對最高山峰。但台灣 &Delta;g<sub>B</sub> 最低值（約 -60 ~ -100 mGal）明顯向西偏移至<b>西部麓山帶與埔里盆地</b>（受厚層低密度前陸沉積物與撓曲影響）；而東部海岸山脈因屬高密度呂宋島弧安山岩與海洋地殼逆衝，&Delta;g<sub>B</sub> 急遽飆升至 +100 mGal 以上。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-morandi-crimson font-bold">證據 03 · 莫氏面深度不足 (Moho Depth)</span>
+                            <span class="text-[11px] font-mono text-ink-light">Seismic & Gravity</span>
+                        </div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">實測山根僅 45–55 km，遠淺於理論均衡深度</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            中央山脈海拔近 4,000 公尺，依艾里模型計算，若要達到完全浮力平衡，其下方地殼總厚度（Moho）應深達 <b>55–65 km</b> 以上。但地球物理反演顯示台灣下方最深莫氏面僅約 45–55 km，山根明顯「發育不足」，產生正均衡異常（&Delta;g<sub>I</sub> &gt; 0）。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-linen bg-paper-bg space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-morandi-crimson font-bold">證據 04 · 動力學成因 (Tectonic Mechanism)</span>
+                            <span class="text-[11px] font-mono text-ink-light">8.2 cm/yr Convergence</span>
+                        </div>
+                        <h4 class="font-serif font-bold text-base text-ink-main">板塊水平擠壓應力「硬撐」起年輕山脈</h4>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            台灣是僅約 400–500 萬年歷史的年輕造山帶，菲律賓海板塊正以每年 <b>8.2 公分</b>的速度向西北擠壓歐亞大陸邊緣。中央山脈的高聳並非靠深部山根「浮」起來的，而是被劇烈的<b>水平構造擠壓應力與逆衝斷層動態支撐（Dynamically Supported）</b>的結果。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter IV: Free-Air vs Bouguer Gravity Anomalies (Question 2) -->
+        <section id="anomalies" class="space-y-10">
+            <div class="space-y-3 border-l-4 border-morandi-slate pl-4">
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-slate tracking-widest uppercase">
+                    <span>CHAPTER IV</span>
+                    <span>·</span>
+                    <span>GRAVITY CORRECTIONS & APPLICATIONS</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-main">重力的雙重濾鏡：自由空間異常與布蓋異常的獲取與分工</h2>
+                <p class="text-sm text-ink-muted">
+                    原始觀測重力值（g<sub>m</sub>）混雜了測站高度、周圍山谷地形、板塊質量與潮汐效應。透過不同程度的數學校正，我們得以分離出地底深處的結構密碼。
+                </p>
+            </div>
+
+            <!-- Part 1: How to obtain them (Formulas & Step-by-step Reduction) -->
+            <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-linen pb-4">
+                    <div>
+                        <span class="text-xs font-mono text-morandi-slate uppercase tracking-wider">PART 01 · DATA REDUCTION</span>
+                        <h3 class="font-serif font-bold text-xl text-ink-main mt-1">如何得到這兩種重力異常？校正公式與物理意義</h3>
+                    </div>
+                    <span class="text-xs font-mono bg-paper-bg px-3 py-1.5 rounded border border-linen text-ink-muted">
+                        參考基準：參考橢球體面 (Reference Ellipsoid)
+                    </span>
+                </div>
+
+                <!-- Two Formula Comparison Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Free-Air Anomaly Formula Card -->
+                    <div class="bg-paper-bg p-6 rounded-xl border border-morandi-crimson/30 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-serif font-bold text-lg text-morandi-crimson">1. 自由空間重力異常 (&Delta;g<sub>FA</sub>)</h4>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-morandi-crimson/10 text-morandi-crimson">保留地形質量</span>
+                        </div>
+                        <div class="bg-paper-card p-3.5 rounded-lg border border-linen font-mono text-xs sm:text-sm text-ink-main overflow-x-auto">
+                            &Delta;g<sub>FA</sub> = g<sub>m</sub> + (&Delta;g<sub>FA_corr</sub> + &Delta;g<sub>T</sub> + &Delta;g<sub>tide</sub>) - g<sub>n</sub>
+                        </div>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            <b>計算邏輯：</b>將測站高度從海拔 h 垂直降至參考橢球體面（海平面），僅補償因「距離地心變遠」而衰減的重力（約 0.3086 mGal/m），並加上地形起伏（&Delta;g<sub>T</sub>）與潮汐校正（&Delta;g<sub>tide</sub>），最後減去該緯度的理論正常重力（g<sub>n</sub>）。<br>
+                            <span class="text-morandi-crimson font-medium">※ 關鍵特徵：並未扣除海平面以上山體岩石的質量引力！</span>
+                        </p>
+                    </div>
+
+                    <!-- Bouguer Anomaly Formula Card -->
+                    <div class="bg-paper-bg p-6 rounded-xl border border-morandi-slate/30 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-serif font-bold text-lg text-morandi-slate">2. 布蓋重力異常 (&Delta;g<sub>B</sub>)</h4>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-morandi-slate/10 text-morandi-slate">剝除地形質量</span>
+                        </div>
+                        <div class="bg-paper-card p-3.5 rounded-lg border border-linen font-mono text-xs sm:text-sm text-ink-main overflow-x-auto">
+                            &Delta;g<sub>B</sub> = g<sub>m</sub> + (&Delta;g<sub>FA_corr</sub> <span class="text-morandi-crimson font-bold">- &Delta;g<sub>BP</sub></span> + &Delta;g<sub>T</sub> + &Delta;g<sub>tide</sub>) - g<sub>n</sub>
+                        </div>
+                        <p class="text-xs text-ink-muted leading-relaxed">
+                            <b>計算邏輯：</b>在自由空間異常的基礎上，再<b>減去布蓋板塊校正（&Delta;g<sub>BP</sub> = 2&pi;G&rho;h）</b>，即把測站與海平面之間假想為厚度 h 的無限水平岩板並移除其引力。<br>
+                            <span class="text-morandi-slate font-medium">※ 關鍵特徵：完全剝除了海平面以上的地形質量效應，只留下「基準面以下」的地下密度變化！</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4-Step Reduction Pipeline Visual -->
+                <div class="pt-2">
+                    <div class="text-xs font-mono text-ink-light mb-3">資料處理四步驟（對應教材 Fig. 2.37）：</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3.5 rounded-lg bg-paper-bg border border-linen">
+                            <span class="font-mono text-[10px] text-morandi-terracotta block">STEP 01 · &Delta;g<sub>T</sub> &amp; &Delta;g<sub>tide</sub></span>
+                            <strong class="font-serif text-ink-main block my-1">地形與潮汐校正</strong>
+                            <span class="text-[11px] text-ink-muted">削平測站周圍高山與山谷的局部引力干擾，消除日月引潮力。</span>
+                        </div>
+                        <div class="p-3.5 rounded-lg bg-paper-bg border border-linen">
+                            <span class="font-mono text-[10px] text-morandi-slate block">STEP 02 · -&Delta;g<sub>BP</sub></span>
+                            <strong class="font-serif text-ink-main block my-1">布蓋板塊校正</strong>
+                            <span class="text-[11px] text-ink-muted">移除測站至海平面之間岩層板塊的萬有引力（僅 &Delta;g<sub>B</sub> 執行此步）。</span>
+                        </div>
+                        <div class="p-3.5 rounded-lg bg-paper-bg border border-linen">
+                            <span class="font-mono text-[10px] text-morandi-moss block">STEP 03 · +&Delta;g<sub>FA_corr</sub></span>
+                            <strong class="font-serif text-ink-main block my-1">自由空間高度校正</strong>
+                            <span class="text-[11px] text-ink-muted">將測站海拔高度歸算至參考橢球體面（海平面），補償距離衰減。</span>
+                        </div>
+                        <div class="p-3.5 rounded-lg bg-paper-bg border border-linen">
+                            <span class="font-mono text-[10px] text-morandi-crimson block">STEP 04 · -g<sub>n</sub></span>
+                            <strong class="font-serif text-ink-main block my-1">緯度正常重力相減</strong>
+                            <span class="text-[11px] text-ink-muted">扣除地球自轉離心力與扁平率造成的標準緯度重力值。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 2: Why present them & How to use both -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Why present & Usage of Free-Air Anomaly -->
+                <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-crimson bg-morandi-crimson/10 px-3 py-1 rounded-full">
+                            <span>USAGE A · 自由空間異常 (&Delta;g<sub>FA</sub>)</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-ink-main">為什麼要呈現 &Delta;g<sub>FA</sub>？它的兩大核心用途</h3>
+                        <p class="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                            因為 &Delta;g<sub>FA</sub> <b>保留了海平面以上地形質量的重力效應</b>，它就像一面檢驗「地表多出來的山，地底有沒有對應的輕物質去抵消」的照妖鏡：
+                        </p>
+                        <ul class="space-y-3 text-xs text-ink-muted">
+                            <li class="flex items-start space-x-2.5">
+                                <span class="w-5 h-5 rounded-full bg-morandi-crimson/15 text-morandi-crimson font-mono text-[11px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <strong class="text-ink-main font-serif text-sm">判斷區域是否達到「大地均衡 (Isostasy)」：</strong><br>
+                                    在廣大高海拔地區（如喜馬拉雅山），若 &Delta;g<sub>FA</sub> 趨近於 <b>0</b>，表示深部有低密度山根完美補償了地表山體質量（已達均衡）；若高海拔區呈現<b>強烈正異常</b>（如台灣中央山脈 +200 mGal），則證明該區「未達局部補償」（Verma, 1985）。
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <span class="w-5 h-5 rounded-full bg-morandi-crimson/15 text-morandi-crimson font-mono text-[11px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <strong class="text-ink-main font-serif text-sm">大地測量學（Geodesy）形狀計算：</strong><br>
+                                    利用全球自由空間異常資料，可計算<b>大地起伏（Geoid Undulation）</b>與<b>垂線偏差（Deflection of the Vertical）</b>，精確描繪真實海平面（大地水準面）與數學旋轉橢球體之間的偏離。
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-linen text-[11px] font-mono text-morandi-crimson">
+                        一句話總結：&Delta;g<sub>FA</sub> 用於探討「地表地形 vs. 深部補償」的整體均衡與大地測量。
+                    </div>
+                </div>
+
+                <!-- Why present & Usage of Bouguer Anomaly -->
+                <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-slate bg-morandi-slate/10 px-3 py-1 rounded-full">
+                            <span>USAGE B · 布蓋異常 (&Delta;g<sub>B</sub>)</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-ink-main">為什麼要呈現 &Delta;g<sub>B</sub>？它的兩大核心用途</h3>
+                        <p class="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                            如果直接看原始重力或 &Delta;g<sub>FA</sub>，地表高山龐大的質量訊號會完全掩蓋地底下的構造。&Delta;g<sub>B</sub> <b>徹底剝除了海平面以上的地形質量</b>，成為純粹透視地底的 X 光機：
+                        </p>
+                        <ul class="space-y-3 text-xs text-ink-muted">
+                            <li class="flex items-start space-x-2.5">
+                                <span class="w-5 h-5 rounded-full bg-morandi-slate/15 text-morandi-slate font-mono text-[11px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <strong class="text-ink-main font-serif text-sm">反演地下岩層密度分佈與地質構造：</strong><br>
+                                    &Delta;g<sub>B</sub> 是基準面以下「側向密度不均勻」的重力效應總和。負異常代表低密度沉積盆地或花崗岩體；正異常代表高密度基性岩漿侵入、隱沒板塊或高密度礦床，可用於繪製地下斷層與構造形貌。
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <span class="w-5 h-5 rounded-full bg-morandi-slate/15 text-morandi-slate font-mono text-[11px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <strong class="text-ink-main font-serif text-sm">追蹤莫氏面（Moho）深淺與地殼厚度變化：</strong><br>
+                                    由於地殼（~2.67 g/cm³）與地函（~3.30 g/cm³）存在巨大密度差，&Delta;g<sub>B</sub> 的大尺度變化能直接反映地殼厚薄——大陸造山帶呈現強烈負布蓋異常（地殼厚、山根深），而大洋盆地則呈現高達 +200~+300 mGal 的正布蓋異常（地殼薄、高密度地函淺）。
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-linen text-[11px] font-mono text-morandi-slate">
+                        一句話總結：&Delta;g<sub>B</sub> 剝除地表干擾，專注於反演「海平面以下」的地下密度與地殼厚度。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Calculator & Profile Workbench Section -->
+        <section id="calculator" class="space-y-8">
+            <div class="space-y-3 border-l-4 border-morandi-moss pl-4">
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-morandi-moss tracking-widest uppercase">
+                    <span>WORKBENCH</span>
+                    <span>·</span>
+                    <span>ISOSTATIC ANOMALY DIAGNOSTIC</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-main">大地均衡與重力異常實時診斷工坊</h2>
+                <p class="text-sm text-ink-muted">
+                    調整地形高度 h<sub>1</sub> 與地殼/地函密度參數，演算艾里模型理論山根深度（Root r）與布蓋校正值（BC）。
+                </p>
+            </div>
+
+            <div class="bg-paper-card border border-linen rounded-2xl p-6 sm:p-8 paper-shadow grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Controls Panel -->
+                <div class="lg:col-span-5 space-y-6 border-b lg:border-b-0 lg:border-r border-linen pb-6 lg:pb-0 lg:pr-8">
+                    <h3 class="font-serif font-bold text-lg text-ink-main">參數設定面板</h3>
+                    
+                    <!-- Slider 1: Topography Height -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-ink-muted">地表地形高度 h<sub>1</sub> (m)</span>
+                            <span id="val-h1" class="font-bold text-morandi-terracotta">3952 m (玉山)</span>
+                        </div>
+                        <input type="range" id="input-h1" min="0" max="6000" step="100" value="3952" class="w-full accent-morandi-terracotta">
+                        <div class="flex justify-between text-[10px] text-ink-light font-mono">
+                            <span>0 m (海平面)</span>
+                            <span>3000 m</span>
+                            <span>6000 m (喜馬拉雅)</span>
+                        </div>
+                    </div>
+
+                    <!-- Slider 2: Crust Density -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-ink-muted">地殼密度 &rho;<sub>c</sub> (g/cm³)</span>
+                            <span id="val-rhoc" class="font-bold text-morandi-moss">2.67 g/cm³</span>
+                        </div>
+                        <input type="range" id="input-rhoc" min="2.4" max="2.9" step="0.01" value="2.67" class="w-full accent-morandi-moss">
+                    </div>
+
+                    <!-- Slider 3: Mantle Density -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-ink-muted">地函密度 &rho;<sub>m</sub> (g/cm³)</span>
+                            <span id="val-rhom" class="font-bold text-morandi-slate">3.27 g/cm³</span>
+                        </div>
+                        <input type="range" id="input-rhom" min="3.0" max="3.5" step="0.01" value="3.27" class="w-full accent-morandi-slate">
+                    </div>
+
+                    <!-- Preset Loader Buttons -->
+                    <div class="pt-2 flex flex-wrap gap-2">
+                        <button onclick="loadPreset('taiwan')" class="text-xs font-mono px-3 py-1.5 rounded border border-morandi-crimson/40 text-morandi-crimson hover:bg-morandi-crimson hover:text-white transition-all">
+                            載入台灣中央山脈
+                        </button>
+                        <button onclick="loadPreset('himalaya')" class="text-xs font-mono px-3 py-1.5 rounded border border-linen text-ink-muted hover:border-ink-main transition-all">
+                            載入喜馬拉雅山脈
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Diagnostic Results Display -->
+                <div class="lg:col-span-7 space-y-6 flex flex-col justify-between">
+                    <h3 class="font-serif font-bold text-lg text-ink-main">理論診斷與重力異常演算輸出</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-paper-bg p-4 rounded-xl border border-linen space-y-1">
+                            <span class="text-[11px] font-mono text-ink-light block">理論完全補償山根深度 (Root r)</span>
+                            <span id="calc-root" class="font-mono font-bold text-2xl text-morandi-moss">17.58 km</span>
+                            <span class="text-[10px] text-ink-muted block">r = [ &rho;<sub>c</sub> / (&rho;<sub>m</sub> - &rho;<sub>c</sub>) ] &times; h₁</span>
+                        </div>
+
+                        <div class="bg-paper-bg p-4 rounded-xl border border-linen space-y-1">
+                            <span class="text-[11px] font-mono text-ink-light block">理論完全補償莫氏面深度 (Moho)</span>
+                            <span id="calc-moho" class="font-mono font-bold text-2xl text-morandi-slate">47.58 km</span>
+                            <span class="text-[10px] text-ink-muted block">假設正常地殼 T₀ = 30 km</span>
+                        </div>
+
+                        <div class="bg-paper-bg p-4 rounded-xl border border-linen space-y-1">
+                            <span class="text-[11px] font-mono text-ink-light block">理論布蓋板塊引力 (BC)</span>
+                            <span id="calc-bc" class="font-mono font-bold text-2xl text-morandi-terracotta">442.4 mGal</span>
+                            <span class="text-[10px] text-ink-muted block">BC = 0.04193 &times; &rho;<sub>c</sub> &times; h₁</span>
+                        </div>
+
+                        <div class="bg-paper-bg p-4 rounded-xl border border-linen space-y-1">
+                            <span class="text-[11px] font-mono text-ink-light block">均衡狀態估算 (Isostatic Status)</span>
+                            <span id="calc-status" class="font-serif font-bold text-lg text-morandi-crimson">未完全補償</span>
+                            <span id="calc-status-sub" class="text-[10px] text-ink-muted block">實測莫氏面偏淺 &harr; 碰撞應力支撐</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-paper-bg p-4 rounded-xl border border-linen text-xs text-ink-muted leading-relaxed font-serif italic">
+                        註：布蓋校正（Bouguer Correction, BC）剝除地表山體引力；若山體下方具備完全補償之深山根，深部質量缺額產生的負重力引力將抵消自由空間異常，使 &Delta;g<sub>I</sub> &approx; 0。台灣中央山脈實測 Moho 僅約 45–55 km，低於完全補償預測，為典型構造應力抬升機制。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Editorial Footer -->
+    <footer class="border-t border-linen bg-paper-card py-12 mt-20">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start space-x-2">
+                    <span class="font-serif font-black text-lg text-ink-main">地質手札</span>
+                    <span class="text-xs font-mono text-ink-light">· GEOPHYSICS ESSAY</span>
+                </div>
+                <p class="text-xs text-ink-light">
+                    參考文獻：Airy (1855), Pratt (1855), Vening Meinesz (1931), Masson et al. (2012), Yen et al. (1990, 1992), Verma (1985).
+                </p>
+            </div>
+            <div class="text-xs font-mono text-ink-light text-center md:text-right space-y-1">
+                <div>Single-Page Web Application · Complete 4-Chapter Edition</div>
+                <div class="text-morandi-moss">&copy; 2026 Literary Editorial Style Edition</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // Model Data Definitions for SVG Rendering & Narrative Updating
+        const modelData = {
+            airy: {
+                title: "(a) 艾里模型 (Airy's Model, 1855)",
+                badge: "均一密度 · 變化山根",
+                formula: "Root r = [ \u03c1c / (\u03c1m - \u03c1c) ] \u00d7 h",
+                desc: "在艾里模型中，地殼密度 \u03c1c 橫向保持常數（2.67 g/cm³）。高聳山脈下方有深厚山根（Root）伸入較緻密的地函中提供浮力；而海洋下方地殼則大幅變薄（反山根）。當浮力補償完全時，自由空氣異常 \u0394gFA \u2248 0，而布蓋異常 \u0394gB 在高山呈現大幅度負異常、在深海呈現強烈正異常。",
+                color: "#5B6E5D",
+                topoPath: "M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242",
+                mohoPath: "M 70,325 L 210,325 Q 315,412 420,325 L 540,325 Q 600,280 660,280 L 760,280",
+                crustPath: "M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242 L 760,280 L 660,280 Q 600,280 540,325 L 420,325 Q 315,412 210,325 L 70,325 Z",
+                oceanPath: "M 540,210 L 760,210 L 760,242 L 660,242 Q 600,242 540,210 Z",
+                crustFill: "#D4C5B0",
+                faPath: "M 70,80 L 220,80 Q 315,76 410,80 L 540,80 Q 600,84 660,80 L 760,80",
+                baPath: "M 70,80 L 210,80 Q 315,116 420,80 L 540,80 Q 600,42 660,42 L 760,42",
+                showPratt: 0,
+                showTaiwan: 0,
+                showOcean: 1,
+                compY: 425,
+                compText: "補償深度 Compensation Depth C-C' (靜岩壓力相等)",
+                mountainText: "高山地形 Mountain (h₁)",
+                mountainX: 315,
+                mountainY: 142,
+                rootText: "深厚山根 Root (r₂)",
+                rootX: 315,
+                rootY: 395,
+                antiRootText: "薄海洋地殼 (反山根)",
+                densityText: "\u03c1c = 2.67 g/cm³ (均一)"
+            },
+            pratt: {
+                title: "(b) 普拉特模型 (Pratt's Model, 1855)",
+                badge: "深度固定 · 橫向密度變異",
+                formula: "\u03c1₁(D + h₁) = \u03c1₀ D = \u03c1₂(D - d)",
+                desc: "在普拉特模型中，地殼底部（莫氏面 / 補償深度 D）是一條完全平坦的水平面，沒有山根起伏。地表地形高低取決於各個垂直岩柱的『熱膨脹與密度差異』：高山下方密度較低（\u03c1₁ = 2.45），海洋下方密度較高（\u03c1₂ = 2.95）。重力異常同樣呈現 \u0394gFA \u2248 0，高山區 \u0394gB 為負值。",
+                color: "#B86B52",
+                topoPath: "M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242",
+                mohoPath: "M 70,365 L 760,365",
+                crustPath: "M 70,210 L 210,210 Q 315,148 420,210 L 540,210 Q 600,242 660,242 L 760,242 L 760,365 L 70,365 Z",
+                oceanPath: "M 540,210 L 760,210 L 760,242 L 660,242 Q 600,242 540,210 Z",
+                crustFill: "url(#pratt-grad)",
+                faPath: "M 70,80 L 220,80 Q 315,77 410,80 L 540,80 Q 600,83 660,80 L 760,80",
+                baPath: "M 70,80 L 210,80 Q 315,112 420,80 L 540,80 Q 600,45 660,45 L 760,45",
+                showPratt: 1,
+                showTaiwan: 0,
+                showOcean: 1,
+                compY: 365,
+                compText: "平坦補償深度 Moho Depth D (無山根起伏)",
+                mountainText: "低密度高山岩柱 (\u03c1₁)",
+                mountainX: 315,
+                mountainY: 142,
+                rootText: "",
+                rootX: 315,
+                rootY: 395,
+                antiRootText: "高密度海洋岩柱 (\u03c1₂)",
+                densityText: ""
+            },
+            meinesz: {
+                title: "(c) 維寧·邁內茲彈性撓曲模型 (Vening Meinesz, 1931)",
+                badge: "區域性彈性剛度 · 廣域撓曲",
+                formula: "Flexural Rigidity Df = E\u00b7he³ / 12(1-\u03bd²)",
+                desc: "維寧·邁內茲模型認為岩石圈是具備彈性剛度的連續板塊。當局部集中質量（如高山或火山鏈）壓在岩石圈上時，板塊不會垂直斷裂下沉，而是像一塊彈性鋼板產生『區域性廣域撓曲（Flexure）』，兩側形成微幅前淵凹陷。重力異常表現為：山頂 \u0394gFA 呈正值、兩側呈負凹陷；\u0394gB 則為寬廣平緩的負異常。",
+                color: "#4A6572",
+                topoPath: "M 70,210 L 220,210 Q 315,148 410,210 L 540,210 Q 600,242 660,242 L 760,242",
+                mohoPath: "M 70,320 Q 170,315 315,385 Q 460,315 560,320 Q 615,282 660,282 L 760,282",
+                crustPath: "M 70,210 L 220,210 Q 315,148 410,210 L 540,210 Q 600,242 660,242 L 760,242 L 760,282 L 660,282 Q 615,282 560,320 Q 460,315 315,385 Q 170,315 70,320 Z",
+                oceanPath: "M 540,210 L 760,210 L 760,242 L 660,242 Q 600,242 540,210 Z",
+                crustFill: "#D4C5B0",
+                faPath: "M 70,80 L 180,80 Q 230,93 265,80 Q 315,58 365,80 Q 400,93 450,80 L 540,80 Q 600,82 660,80 L 760,80",
+                baPath: "M 70,80 C 160,80 220,108 315,108 C 410,108 470,80 540,80 Q 600,45 660,45 L 760,45",
+                showPratt: 0,
+                showTaiwan: 0,
+                showOcean: 1,
+                compY: 425,
+                compText: "區域補償深度 Regional Compensation Depth",
+                mountainText: "集中地形負載 Load",
+                mountainX: 315,
+                mountainY: 142,
+                rootText: "廣域平緩撓曲山根 (Regional Flexure)",
+                rootX: 315,
+                rootY: 365,
+                antiRootText: "海洋岩石圈",
+                densityText: "彈性板塊剛度 Df"
+            },
+            taiwan: {
+                title: "(d) 台灣碰撞造山剖面 (Taiwan Active Collision Orogen)",
+                badge: "構造擠壓 · 補償不足 Undercompensated",
+                formula: "\u0394gI = \u0394gB - \u0394gR > 0 (Mass Excess Supported by Tectonics)",
+                desc: "台灣位於菲律賓海板塊（8.2 cm/yr）與歐亞大陸板塊的劇烈碰撞帶。中央山脈高達近 4,000m，但實測 Moho 深度僅 45–55 km，山根明顯發育不足且向東偏移。自由空氣異常 \u0394gFA 在中央山脈高達 +200 ~ +300 mGal（顯示巨大質量過剩）；布蓋異常 \u0394gB 負值中心偏向西部麓山帶，東部海岸山脈與外海則呈強烈正異常。",
+                color: "#A24236",
+                topoPath: "M 70,210 L 230,210 Q 365,146 445,208 L 465,209 Q 495,188 525,212 Q 600,248 670,248 L 760,248",
+                mohoPath: "M 70,315 L 230,315 Q 340,368 445,355 Q 500,305 560,275 L 760,275",
+                crustPath: "M 70,210 L 230,210 Q 365,146 445,208 L 465,209 Q 495,188 525,212 Q 600,248 670,248 L 760,248 L 760,275 L 560,275 Q 500,305 445,355 Q 340,368 230,315 L 70,315 Z",
+                oceanPath: "M 525,210 L 760,210 L 760,248 L 670,248 Q 600,248 525,210 Z",
+                crustFill: "#D4C5B0",
+                faPath: "M 70,80 L 220,80 Q 365,28 455,84 Q 495,62 530,85 Q 600,98 670,82 L 760,80",
+                baPath: "M 70,80 L 180,80 Q 285,106 385,92 Q 485,48 560,40 L 760,38",
+                showPratt: 0,
+                showTaiwan: 1,
+                showOcean: 1,
+                compY: 425,
+                compText: "理論完全補償深度 (~60 km) — 實測山根未達此深度",
+                mountainText: "",
+                mountainX: 365,
+                mountainY: 140,
+                rootText: "非對稱 Moho (45–55 km，山根偏淺)",
+                rootX: 375,
+                rootY: 342,
+                antiRootText: "菲律賓海板塊 (薄海洋地殼)",
+                densityText: "碰撞逆衝構造帶"
+            }
+        };
+
+        // Switch Active Model Visuals & Descriptions
+        function switchModel(key) {
+            const data = modelData[key];
+            if (!data) return;
+
+            const tabs = ['airy', 'pratt', 'meinesz', 'taiwan'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === key) {
+                    btn.className = `px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 text-white shadow-sm`;
+                    btn.style.backgroundColor = data.color;
+                    btn.style.borderColor = data.color;
+                } else {
+                    btn.className = `px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 border border-linen text-ink-muted hover:border-ink-main`;
+                    btn.style.backgroundColor = 'transparent';
+                }
+            });
+
+            const topoEl = document.getElementById('topo-line');
+            topoEl.setAttribute('d', data.topoPath);
+            topoEl.setAttribute('stroke', data.color);
+
+            document.getElementById('moho-line').setAttribute('d', data.mohoPath);
+
+            const crustBody = document.getElementById('crust-body');
+            crustBody.setAttribute('d', data.crustPath);
+            crustBody.setAttribute('fill', data.crustFill);
+
+            document.getElementById('crust-overlay').setAttribute('d', data.crustPath);
+
+            const oceanEl = document.getElementById('ocean-water');
+            oceanEl.setAttribute('d', data.oceanPath);
+            oceanEl.setAttribute('opacity', data.showOcean ? '0.24' : '0');
+
+            document.getElementById('path-fa').setAttribute('d', data.faPath);
+            document.getElementById('path-ba').setAttribute('d', data.baPath);
+
+            document.getElementById('pratt-columns').setAttribute('opacity', data.showPratt);
+            document.getElementById('taiwan-faults').setAttribute('opacity', data.showTaiwan);
+
+            const compLine = document.getElementById('compensation-line');
+            compLine.setAttribute('y1', data.compY);
+            compLine.setAttribute('y2', data.compY);
+            const compText = document.getElementById('compensation-text');
+            compText.setAttribute('y', data.compY - 7);
+            compText.textContent = data.compText;
+
+            const mLabel = document.getElementById('label-mountain');
+            mLabel.textContent = data.mountainText;
+            mLabel.setAttribute('x', data.mountainX);
+            mLabel.setAttribute('y', data.mountainY);
+
+            const rLabel = document.getElementById('label-root');
+            rLabel.textContent = data.rootText;
+            rLabel.setAttribute('x', data.rootX);
+            rLabel.setAttribute('y', data.rootY);
+
+            document.getElementById('label-antiroot').textContent = data.antiRootText;
+            document.getElementById('label-density').textContent = data.densityText;
+            document.getElementById('label-plain').setAttribute('opacity', data.showTaiwan ? '0' : '1');
+
+            const titleEl = document.getElementById('desc-title');
+            titleEl.style.color = data.color;
+            titleEl.innerHTML = `
+                <span>${data.title}</span>
+                <span class="ml-3 text-xs font-mono font-normal px-2 py-0.5 rounded" style="background-color: ${data.color}20; color: ${data.color}">${data.badge}</span>
+            `;
+            document.getElementById('desc-formula').innerHTML = data.formula;
+            document.getElementById('desc-text').textContent = data.desc;
+        }
+
+        // Live Diagnostic Calculator Logic
+        function updateCalculator() {
+            const h1 = parseFloat(document.getElementById('input-h1').value);
+            const rhoc = parseFloat(document.getElementById('input-rhoc').value);
+            const rhom = parseFloat(document.getElementById('input-rhom').value);
+
+            document.getElementById('val-h1').textContent = `${h1} m`;
+            document.getElementById('val-rhoc').textContent = `${rhoc} g/cm³`;
+            document.getElementById('val-rhom').textContent = `${rhom} g/cm³`;
+
+            const densityDiff = rhom - rhoc;
+            let rootR = 0;
+            if (densityDiff > 0) {
+                rootR = (rhoc / densityDiff) * (h1 / 1000.0);
+            }
+
+            const normalCrustT0 = 30.0;
+            const calculatedMoho = normalCrustT0 + rootR;
+            const bc = 0.04193 * rhoc * h1;
+
+            document.getElementById('calc-root').textContent = `${rootR.toFixed(2)} km`;
+            document.getElementById('calc-moho').textContent = `${calculatedMoho.toFixed(2)} km`;
+            document.getElementById('calc-bc').textContent = `${bc.toFixed(1)} mGal`;
+
+            const statusEl = document.getElementById('calc-status');
+            const subEl = document.getElementById('calc-status-sub');
+
+            if (h1 >= 3500 && calculatedMoho > 46) {
+                statusEl.textContent = "處於補償不足 (Undercompensated)";
+                statusEl.className = "font-serif font-bold text-lg text-morandi-crimson";
+                subEl.textContent = "實測山根深度 (45-55km) 小於理論補償值 ➔ 板塊碰撞應力動態硬撐";
+            } else if (h1 === 0) {
+                statusEl.textContent = "海平面基準點 (Datum)";
+                statusEl.className = "font-serif font-bold text-lg text-ink-main";
+                subEl.textContent = "地殼厚度趨近標準 30 km";
+            } else {
+                statusEl.textContent = "靜力浮力補償調整中";
+                statusEl.className = "font-serif font-bold text-lg text-morandi-moss";
+                subEl.textContent = "浮力補償山根隨海拔增加";
+            }
+        }
+
+        function loadPreset(type) {
+            if (type === 'taiwan') {
+                document.getElementById('input-h1').value = 3952;
+                document.getElementById('input-rhoc').value = 2.67;
+                document.getElementById('input-rhom').value = 3.27;
+                switchModel('taiwan');
+            } else if (type === 'himalaya') {
+                document.getElementById('input-h1').value = 5500;
+                document.getElementById('input-rhoc').value = 2.67;
+                document.getElementById('input-rhom').value = 3.30;
+                switchModel('airy');
+            }
+            updateCalculator();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('input-h1').addEventListener('input', updateCalculator);
+            document.getElementById('input-rhoc').addEventListener('input', updateCalculator);
+            document.getElementById('input-rhom').addEventListener('input', updateCalculator);
+
+            updateCalculator();
+            switchModel('airy');
+        });
+    </script>
+</body>
+</html>
